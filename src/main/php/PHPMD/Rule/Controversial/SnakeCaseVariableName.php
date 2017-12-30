@@ -27,7 +27,7 @@ use PHPMD\Rule\MethodAware;
  * @author     Francis Besset <francis.besset@gmail.com>
  * @since      1.1.0
  */
-class SnakeCaseVariableNameSnakeCaseVariableName extends AbstractRule implements MethodAware, FunctionAware
+class SnakeCaseVariableName extends AbstractRule implements MethodAware, FunctionAware
 {
     /**
      * @var array
