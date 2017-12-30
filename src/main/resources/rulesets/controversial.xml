@@ -155,4 +155,28 @@ class ClassName {
             ]]>
         </example>
     </rule>
+
+
+    <rule name="SnakeCaseVariableName"
+          since="0.2"
+          message = "The variable {0} is not named in snake_case."
+          class="PHPMD\Rule\Controversial\SnakeCaseVariableName"
+          externalInfoUrl="#">
+        <description>
+            <![CDATA[
+It is considered best practice to use the snake_case notation to name variables.
+            ]]>
+        </description>
+        <priority>1</priority>
+        <properties />
+        <example>
+            <![CDATA[
+class ClassName {
+    public function doSomething() {
+        $data_module = new DataModule();
+    }
+}
+            ]]>
+        </example>
+    </rule>
 </ruleset>
