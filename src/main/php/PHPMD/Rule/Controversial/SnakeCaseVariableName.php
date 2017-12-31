@@ -63,7 +63,7 @@ class SnakeCaseVariableName extends AbstractRule implements MethodAware, Functio
                 continue;
             }
 
-            if (preg_match('/^\$[a-z][a-zA-Z0-9]*$/', $image)) {
+            if (preg_match('/^\$[a-z][a-z_0-9]*$/', $image)) {
                 continue;
             }
 
