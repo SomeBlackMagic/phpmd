@@ -15,6 +15,7 @@
  * @link http://phpmd.org/
  */
 
+namespace PHPMD\Rule\Controversial;
 
 use PHPMD\AbstractNode;
 use PHPMD\AbstractRule;
