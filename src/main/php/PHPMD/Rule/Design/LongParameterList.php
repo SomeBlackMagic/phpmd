@@ -44,7 +44,7 @@ class LongParameterList extends AbstractRule implements FunctionAware, MethodAwa
 
         $exceptions = $this->getExceptionsList();
 
-        if (in_array($node->getName(), $exceptions)) {
+        if (in_array($node->getName(), $exceptions, true)) {
             return;
         }
 

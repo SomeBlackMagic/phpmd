@@ -33,9 +33,38 @@ use PHPMD\Stubs\RuleStub;
  */
 abstract class AbstractTest extends \PHPUnit\Framework\TestCase
 {
+    /**
+     * @param string $originalClassName
+     * @param array $methods
+     * @param array $arguments
+     * @param string $mockClassName
+     * @param bool $callOriginalConstructor
+     * @param bool $callOriginalClone
+     * @param bool $callAutoload
+     * @param bool $cloneArguments
+     * @param bool $callOriginalMethods
+     * @param null $proxyTarget
+     * @deprecated Method deprecated since Release 5.4.0; use createMock() or getMockBuilder() instead
+     * @return \PHPUnit_Framework_MockObject_MockObject
+     *
+     */
+    public function getMock($originalClassName, $methods = [], array $arguments = [], $mockClassName = '', $callOriginalConstructor = true, $callOriginalClone = true, $callAutoload = true, $cloneArguments = false, $callOriginalMethods = false, $proxyTarget = NULL) {
+        $mockObject = $this->getMockObjectGenerator()->getMock(
+            $originalClassName,
+            $methods,
+            $arguments,
+            $mockClassName,
+            $callOriginalConstructor,
+            $callOriginalClone,
+            $callAutoload,
+            $cloneArguments,
+            $callOriginalMethods,
+            $proxyTarget
+        );
 
-    public function getMock($class) {
-        return $this->getMockBuilder($class)->getMock();
+        $this->registerMockObject($mockObject);
+
+        return $mockObject;
     }
     /**
      * Directory with test files.
@@ -347,10 +376,8 @@ abstract class AbstractTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * Creates a mocked report instance.
-     *
-     * @param integer $expectedInvokes Number of expected invokes.
-     * @return \PHPMD\Report
+     * @param int $expectedInvokes number of expected invokes.
+     * @return \PHPUnit_Framework_MockObject_MockObject
      */
     protected function getReportMock($expectedInvokes = -1)
     {

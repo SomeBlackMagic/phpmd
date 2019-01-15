@@ -209,7 +209,7 @@ class CommandTest extends AbstractTest
             )
         );
 
-        $data = @parse_ini_file(__DIR__ . '/../../../../../build.properties');
+        $data = @parse_ini_file(__DIR__ . '/../../../../build.properties');
         $version = $data['project.version'];
 
         $this->assertEquals('PHPMD ' . $version, trim(StreamFilter::$streamHandle));
