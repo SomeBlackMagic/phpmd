@@ -16,7 +16,7 @@ sudo: false
 
 env:
     global:
-        TEST_CONFIG="phpunit.xml.dist"
+        TEST_CONFIG="build/phpunit/phpunit.xml.dist"
 
 before_script:
   - composer self-update
