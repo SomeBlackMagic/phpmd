@@ -613,7 +613,6 @@ class UnusedLocalVariableTest extends AbstractTest
     }
 
     /**
-     * @test
      * @return void
      * @since 2.0.0
      */
@@ -650,7 +649,6 @@ class UnusedLocalVariableTest extends AbstractTest
     }
 
     /**
-     * @test
      * @return void
      * @since 2.0.1
      */

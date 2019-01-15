@@ -27,10 +27,6 @@ use PHPMD\Node\InterfaceNode;
 use PHPMD\Node\MethodNode;
 use PHPMD\Node\TraitNode;
 use PHPMD\Stubs\RuleStub;
-use PHPMD\RuleViolation;
-use PHPMD\RuleSet;
-use PHPMD\AbstractRule;
-use PHPMD\Report;
 
 /**
  * Abstract base class for PHPMD test cases.
