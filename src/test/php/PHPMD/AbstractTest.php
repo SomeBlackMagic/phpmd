@@ -31,8 +31,12 @@ use PHPMD\Stubs\RuleStub;
 /**
  * Abstract base class for PHPMD test cases.
  */
-abstract class AbstractTest extends \PHPUnit_Framework_TestCase
+abstract class AbstractTest extends \PHPUnit\Framework\TestCase
 {
+
+    public function getMock($class) {
+        return $this->getMockBuilder($class)->getMock();
+    }
     /**
      * Directory with test files.
      *
