@@ -320,7 +320,7 @@ abstract class AbstractTest extends \PHPUnit\Framework\TestCase
             $class->expects($this->atLeastOnce())
                 ->method('getMetric')
                 ->with($this->equalTo($metric))
-                ->will($this->returnValue($value));
+                ->willReturn($value);
         }
         return $class;
     }
@@ -374,7 +374,7 @@ abstract class AbstractTest extends \PHPUnit\Framework\TestCase
         $mock->expects($this->atLeastOnce())
             ->method('getMetric')
             ->with($this->equalTo($metric))
-            ->will($this->returnValue($value));
+            ->willReturn($value);
 
         return $mock;
     }
@@ -461,24 +461,24 @@ abstract class AbstractTest extends \PHPUnit\Framework\TestCase
             $rule = new RuleStub();
         }
 
-        $ruleViolation->expects($this->any())
+        $ruleViolation
             ->method('getRule')
-            ->will($this->returnValue($rule));
-        $ruleViolation->expects($this->any())
+            ->willReturn($rule);
+        $ruleViolation
             ->method('getFileName')
-            ->will($this->returnValue($fileName));
-        $ruleViolation->expects($this->any())
+            ->willReturn($fileName);
+        $ruleViolation
             ->method('getBeginLine')
-            ->will($this->returnValue($beginLine));
-        $ruleViolation->expects($this->any())
+            ->willReturn($beginLine);
+        $ruleViolation
             ->method('getEndLine')
-            ->will($this->returnValue($endLine));
-        $ruleViolation->expects($this->any())
+            ->willReturn($endLine);
+        $ruleViolation
             ->method('getNamespaceName')
-            ->will($this->returnValue('TestStubPackage'));
-        $ruleViolation->expects($this->any())
+            ->willReturn('TestStubPackage');
+        $ruleViolation
             ->method('getDescription')
-            ->will($this->returnValue('Test description'));
+            ->willReturn('Test description');
 
         return $ruleViolation;
     }

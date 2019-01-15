@@ -290,7 +290,6 @@ class UnusedFormalParameterTest extends AbstractTest
     }
 
     /**
-     * @test
      * @return void
      * @since 2.0.0
      */
@@ -377,7 +376,6 @@ class UnusedFormalParameterTest extends AbstractTest
     }
 
     /**
-     * @test
      * @return void
      * @since 2.0.0
      */
@@ -389,7 +387,6 @@ class UnusedFormalParameterTest extends AbstractTest
     }
 
     /**
-     * @test
      * @return void
      * @since 2.0.0
      */
@@ -401,7 +398,6 @@ class UnusedFormalParameterTest extends AbstractTest
     }
 
     /**
-     * @test
      * @return void
      * @since 2.0.0
      */
@@ -413,7 +409,6 @@ class UnusedFormalParameterTest extends AbstractTest
     }
 
     /**
-     * @test
      * @return void
      * @since 2.0.1
      */
@@ -425,7 +420,6 @@ class UnusedFormalParameterTest extends AbstractTest
     }
 
     /**
-     * @test
      * @return void
      * @since 2.0.1
      */
@@ -437,7 +431,6 @@ class UnusedFormalParameterTest extends AbstractTest
     }
 
     /**
-     * @test
      * @return void
      * @since 2.0.1
      */

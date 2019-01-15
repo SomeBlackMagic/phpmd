@@ -138,7 +138,7 @@ class TooManyMethodsTest extends AbstractTest
         if (is_array($methodNames)) {
             $class->expects($this->once())
                 ->method('getMethodNames')
-                ->will($this->returnValue($methodNames));
+                ->willReturn($methodNames);
         }
         return $class;
     }

@@ -85,7 +85,7 @@ class RuleSetFactoryTest extends AbstractTest
     public function testCreateRuleSetsForSingleFileReturnsArrayWithOneElement()
     {
         $ruleSets = $this->createRuleSetsFromAbsoluteFiles('rulesets/set1.xml');
-        $this->assertEquals(1, count($ruleSets));
+        $this->assertCount(1, $ruleSets);
     }
 
     /**
@@ -132,7 +132,7 @@ class RuleSetFactoryTest extends AbstractTest
             'rulesets/set1.xml',
             'rulesets/set2.xml'
         );
-        $this->assertEquals(2, count($ruleSets));
+        $this->assertCount(2, $ruleSets);
     }
 
     /**
@@ -203,7 +203,7 @@ class RuleSetFactoryTest extends AbstractTest
         self::changeWorkingDirectory();
 
         $ruleSets = $this->createRuleSetsFromFiles('rulesets/set1.xml');
-        $this->assertEquals(1, count($ruleSets));
+        $this->assertCount(1, $ruleSets);
     }
 
     /**

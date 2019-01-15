@@ -44,7 +44,7 @@ class ParserTest extends AbstractTest
         $mock = $this->getPHPDependClassMock();
         $mock->expects($this->once())
             ->method('isUserDefined')
-            ->will($this->returnValue(true));
+            ->willReturn(true);
 
         $adapter = new Parser($this->getPHPDependMock());
         $adapter->addRuleSet($this->getRuleSetMock(ClassNode::class));
@@ -63,7 +63,7 @@ class ParserTest extends AbstractTest
         $mock = $this->getPHPDependClassMock();
         $mock->expects($this->once())
             ->method('isUserDefined')
-            ->will($this->returnValue(false));
+            ->willReturn(false);
 
         $adapter = new Parser($this->getPHPDependMock());
         $adapter->addRuleSet($this->getRuleSetMock());
@@ -140,9 +140,9 @@ class ParserTest extends AbstractTest
         $pdepend = $this->getPHPDependMock();
         $pdepend->expects($this->once())
             ->method('getExceptions')
-            ->will($this->returnValue(array(
+            ->willReturn(array(
                 new InvalidStateException(42, __FILE__, 'foo')
-            )));
+            ));
 
         $parser = new Parser($pdepend);
         $parser->parse($report);
@@ -166,18 +166,18 @@ class ParserTest extends AbstractTest
     protected function getPHPDependClassMock()
     {
         $class = $this->getMock(ASTClass::class, array(), array(null));
-        $class->expects($this->any())
+        $class
             ->method('getCompilationUnit')
-            ->will($this->returnValue($this->getPHPDependFileMock('foo.php')));
-        $class->expects($this->any())
+            ->willReturn($this->getPHPDependFileMock('foo.php'));
+        $class
             ->method('getConstants')
-            ->will($this->returnValue(new \ArrayIterator(array())));
-        $class->expects($this->any())
+            ->willReturn(new \ArrayIterator(array()));
+        $class
             ->method('getProperties')
-            ->will($this->returnValue(new \ArrayIterator(array())));
-        $class->expects($this->any())
+            ->willReturn(new \ArrayIterator(array()));
+        $class
             ->method('getMethods')
-            ->will($this->returnValue(new \ArrayIterator(array())));
+            ->willReturn(new \ArrayIterator(array()));
 
         return $class;
     }
@@ -193,7 +193,7 @@ class ParserTest extends AbstractTest
         $function = $this->getMock(ASTFunction::class, array(), array(null));
         $function->expects($this->atLeastOnce())
             ->method('getCompilationUnit')
-            ->will($this->returnValue($this->getPHPDependFileMock($fileName)));
+            ->willReturn($this->getPHPDependFileMock($fileName));
 
         return $function;
     }
@@ -209,7 +209,7 @@ class ParserTest extends AbstractTest
         $method = $this->getMock(ASTMethod::class, array(), array(null));
         $method->expects($this->atLeastOnce())
             ->method('getCompilationUnit')
-            ->will($this->returnValue($this->getPHPDependFileMock($fileName)));
+            ->willReturn($this->getPHPDependFileMock($fileName));
 
         return $method;
     }
@@ -223,9 +223,9 @@ class ParserTest extends AbstractTest
     protected function getPHPDependFileMock($fileName)
     {
         $file = $this->getMock(ASTCompilationUnit::class, array(), array(null));
-        $file->expects($this->any())
+        $file
             ->method('getFileName')
-            ->will($this->returnValue($fileName));
+            ->willReturn($fileName);
 
         return $file;
     }

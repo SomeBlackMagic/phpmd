@@ -79,7 +79,7 @@ class ExcessivePublicCountWorksCorrectlyWithStaticMethodsTest extends AbstractTe
                             }
                         }
                         $self->assertTrue($isViolating);
-                        $self->assertEquals(4, count($report->getRuleViolations()));
+                        $self->assertCount(4, $report->getRuleViolations());
                     }
                 )
             );
@@ -119,7 +119,7 @@ class ExcessivePublicCountWorksCorrectlyWithStaticMethodsTest extends AbstractTe
                             }
                         }
                         $self->assertFalse($isViolating);
-                        $self->assertEquals(3, count($report->getRuleViolations()));
+                        $self->assertCount(3, $report->getRuleViolations());
                     }
                 )
             );

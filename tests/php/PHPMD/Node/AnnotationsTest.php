@@ -48,14 +48,12 @@ class AnnotationsTest extends AbstractTest
         $class->expects($this->once())
             ->method('__call')
             ->with($this->equalTo('getDocComment'))
-            ->will(
-                $this->returnValue(
-                    '/**
+            ->willReturn(
+                '/**
                       * @SuppressWarnings("Foo")
                       * @SuppressWarnings("Bar")
                       * @SuppressWarnings("Baz")
                       */'
-                )
             );
 
         $annotations = new Annotations($class);
@@ -73,7 +71,7 @@ class AnnotationsTest extends AbstractTest
         $class->expects($this->once())
             ->method('__call')
             ->with($this->equalTo('getDocComment'))
-            ->will($this->returnValue('/** @SuppressWarnings("PMD") */'));
+            ->willReturn('/** @SuppressWarnings("PMD") */');
 
         $annotations = new Annotations($class);
         $this->assertTrue($annotations->suppresses($this->getRuleMock()));
@@ -90,13 +88,11 @@ class AnnotationsTest extends AbstractTest
         $class->expects($this->once())
             ->method('__call')
             ->with($this->equalTo('getDocComment'))
-            ->will(
-                $this->returnValue(
-                    '/**
+            ->willReturn(
+                '/**
                       * @SuppressWarnings("FooBar")
                       * @SuppressWarnings("PMD")
                       */'
-                )
             );
 
         $annotations = new Annotations($class);

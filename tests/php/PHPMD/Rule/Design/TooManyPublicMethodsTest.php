@@ -137,12 +137,12 @@ class TooManyPublicMethodsTest extends AbstractTest
     {
         $class = $this->getClassMock('npm', $numberOfMethods);
 
-        $class->expects($this->any())
+        $class
             ->method('getMethods')
-            ->will($this->returnValue(array_merge(
+            ->willReturn(array_merge(
                 array_map(array($this, 'createPublicMethod'), $publicMethods),
                 array_map(array($this, 'createPrivateMethod'), $privateMethods)
-            )));
+            ));
 
         return $class;
     }

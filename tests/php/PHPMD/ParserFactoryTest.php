@@ -41,7 +41,7 @@ class ParserFactoryTest extends AbstractTest
         $phpmd = $this->getMock(PHPMD::class, array('getInput'));
         $phpmd->expects($this->once())
             ->method('getInput')
-            ->will($this->returnValue($uri));
+            ->willReturn($uri);
 
         $ruleSet = $this->getRuleSetMock(ClassNode::class);
 
@@ -64,7 +64,7 @@ class ParserFactoryTest extends AbstractTest
         $phpmd = $this->getMock(PHPMD::class, array('getInput'));
         $phpmd->expects($this->once())
             ->method('getInput')
-            ->will($this->returnValue($uri));
+            ->willReturn($uri);
 
         $ruleSet = $this->getRuleSetMock(ClassNode::class);
 
@@ -88,7 +88,7 @@ class ParserFactoryTest extends AbstractTest
         $phpmd = $this->getMock(PHPMD::class, array('getInput'));
         $phpmd->expects($this->once())
             ->method('getInput')
-            ->will($this->returnValue($uri1 . ',' . $uri2));
+            ->willReturn($uri1 . ',' . $uri2);
 
         $ruleSet = $this->getRuleSetMock(ClassNode::class, 2);
 
@@ -112,7 +112,7 @@ class ParserFactoryTest extends AbstractTest
         $phpmd = $this->getMock(PHPMD::class, array('getInput'));
         $phpmd->expects($this->once())
             ->method('getInput')
-            ->will($this->returnValue($uri1 . ',' . $uri2));
+            ->willReturn($uri1 . ',' . $uri2);
 
         $ruleSet = $this->getRuleSetMock(ClassNode::class, 2);
 
@@ -135,10 +135,10 @@ class ParserFactoryTest extends AbstractTest
         $phpmd = $this->getMock(\PHPMD\PHPMD::class, array('getIgnorePattern', 'getInput'));
         $phpmd->expects($this->exactly(2))
             ->method('getIgnorePattern')
-            ->will($this->returnValue(array('Test')));
+            ->willReturn(array('Test'));
         $phpmd->expects($this->once())
             ->method('getInput')
-            ->will($this->returnValue($uri));
+            ->willReturn($uri);
 
         $factory->create($phpmd);
     }
@@ -157,10 +157,10 @@ class ParserFactoryTest extends AbstractTest
         $phpmd = $this->getMock(\PHPMD\PHPMD::class, array('getFileExtensions', 'getInput'));
         $phpmd->expects($this->exactly(2))
             ->method('getFileExtensions')
-            ->will($this->returnValue(array('.php')));
+            ->willReturn(array('.php'));
         $phpmd->expects($this->once())
             ->method('getInput')
-            ->will($this->returnValue($uri));
+            ->willReturn($uri);
 
         $factory->create($phpmd);
     }
