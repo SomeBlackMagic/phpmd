@@ -90,16 +90,16 @@ class CommandTest extends AbstractTest
                 Command::EXIT_SUCCESS,
                 array('--ignore-violations-on-exit')
             ),
-#TODO
-//            array(
-//                'source/ccn_suppress_function.php',
-//                Command::EXIT_VIOLATION,
-//                array('--strict')
-//            ),
-//            array(
-//                'source/ccn_suppress_function.php',
-//                Command::EXIT_SUCCESS
-//            ),
+
+            array(
+                'source/ccn_suppress_function.php',
+                Command::EXIT_VIOLATION,
+                array('--strict')
+            ),
+            array(
+                'source/ccn_suppress_function.php',
+                Command::EXIT_SUCCESS
+            ),
         );
     }
 
@@ -141,8 +141,6 @@ class CommandTest extends AbstractTest
      */
     public function testWithFilter($option, $value)
     {
-        #TODO
-        return;
         $args = array(
             __FILE__,
             self::createFileUri('source/'),
