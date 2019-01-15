@@ -40,6 +40,10 @@ class CamelCaseParameterName extends AbstractRule implements MethodAware, Functi
     public function apply(AbstractNode $node)
     {
         foreach ($node->getParameters() as $parameter) {
+            $exceptions = $this->getExceptionsList();
+            if (in_array(substr($parameter->getName(), 1), $exceptions)) {
+                continue;
+            }
             if (!preg_match('/^\$[a-z][a-zA-Z0-9]*$/', $parameter->getName())) {
                 $this->addViolation(
                     $node,
@@ -49,5 +53,15 @@ class CamelCaseParameterName extends AbstractRule implements MethodAware, Functi
                 );
             }
         }
+    }
+    
+    private function getExceptionsList()
+    {
+        try {
+            $exceptions = $this->getStringProperty('exceptions');
+        } catch (\OutOfBoundsException $e) {
+            $exceptions = '';
+        }
+        return explode(',', $exceptions);
     }
 }
