@@ -1,5 +1,5 @@
 {
-  "name": "phpmd/phpmd",
+  "name": "someblackmagic/phpmd",
   "description": "PHPMD is a spin-off project of PHP Depend and aims to be a PHP equivalent of the well known Java tool PMD.",
   "keywords": [
     "phpmd",
@@ -30,9 +30,6 @@
       "role": "Contributors"
     }
   ],
-  "support": {
-    "irc": "irc://irc.freenode.org/phpmd"
-  },
   "minimum-stability": "stable",
   "require": {
     "php": ">=5.4.0",
