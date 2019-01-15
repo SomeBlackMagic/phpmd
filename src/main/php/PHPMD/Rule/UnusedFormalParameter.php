@@ -65,9 +65,30 @@ class UnusedFormalParameter extends AbstractLocalVariable implements FunctionAwa
         $this->collectParameters($node);
         $this->removeUsedParameters($node);
 
+        $exceptions = $this->getExceptionsList();
+
         foreach ($this->nodes as $node) {
+            if (in_array(substr($node->getImage(), 1), $exceptions)) {
+                continue;
+            }
             $this->addViolation($node, array($node->getImage()));
         }
+    }
+
+    /**
+     * Gets array of exceptions from property
+     *
+     * @return array
+     */
+    private function getExceptionsList()
+    {
+        try {
+            $exceptions = $this->getStringProperty('exceptions');
+        } catch (\OutOfBoundsException $e) {
+            $exceptions = '';
+        }
+
+        return explode(',', $exceptions);
     }
 
     /**

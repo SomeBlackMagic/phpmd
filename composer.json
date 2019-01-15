@@ -1,5 +1,5 @@
 {
-  "name": "phpmd/phpmd",
+  "name": "matla/phpmd",
   "description": "PHPMD is a spin-off project of PHP Depend and aims to be a PHP equivalent of the well known Java tool PMD.",
   "keywords": [
     "phpmd",
@@ -8,6 +8,7 @@
     "mess detection",
     "mess detector"
   ],
+  "version": "2.6.2",
   "type": "project",
   "license": "BSD-3-Clause",
   "homepage": "https://phpmd.org/",
