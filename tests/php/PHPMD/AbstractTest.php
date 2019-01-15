@@ -27,6 +27,10 @@ use PHPMD\Node\InterfaceNode;
 use PHPMD\Node\MethodNode;
 use PHPMD\Node\TraitNode;
 use PHPMD\Stubs\RuleStub;
+use PHPMD\RuleViolation;
+use PHPMD\RuleSet;
+use PHPMD\AbstractRule;
+use PHPMD\Report;
 
 /**
  * Abstract base class for PHPMD test cases.
@@ -305,7 +309,7 @@ abstract class AbstractTest extends \PHPUnit\Framework\TestCase
     protected function getClassMock($metric = null, $value = null)
     {
         $class = $this->getMock(
-            'PHPMD\\Node\\ClassNode',
+            ClassNode::class,
             array(),
             array(null),
             '',
@@ -331,7 +335,7 @@ abstract class AbstractTest extends \PHPUnit\Framework\TestCase
     protected function getMethodMock($metric = null, $value = null)
     {
         return $this->initFunctionOrMethod(
-            $this->getMock('PHPMD\\Node\\MethodNode', array(), array(null), '', false),
+            $this->getMock(MethodNode::class, array(), array(null), '', false),
             $metric,
             $value
         );
@@ -347,7 +351,7 @@ abstract class AbstractTest extends \PHPUnit\Framework\TestCase
     protected function createFunctionMock($metric = null, $value = null)
     {
         return $this->initFunctionOrMethod(
-            $this->getMock('PHPMD\\Node\\FunctionNode', array(), array(null), '', false),
+            $this->getMock(FunctionNode::class, array(), array(null), '', false),
             $metric,
             $value
         );
@@ -391,7 +395,7 @@ abstract class AbstractTest extends \PHPUnit\Framework\TestCase
             $expects = $this->exactly($expectedInvokes);
         }
 
-        $report = $this->getMock('PHPMD\\Report');
+        $report = $this->getMock(Report::class);
         $report->expects($expects)
             ->method('addRuleViolation');
 
@@ -405,7 +409,7 @@ abstract class AbstractTest extends \PHPUnit\Framework\TestCase
      */
     protected function getRuleMock()
     {
-        return $this->getMockForAbstractClass('PHPMD\\AbstractRule');
+        return $this->getMockForAbstractClass(AbstractRule::class);
     }
 
     /**
@@ -417,7 +421,7 @@ abstract class AbstractTest extends \PHPUnit\Framework\TestCase
      */
     protected function getRuleSetMock($expectedClass = null, $count = '*')
     {
-        $ruleSet = $this->getMock('PHPMD\RuleSet');
+        $ruleSet = $this->getMock(RuleSet::class);
         if ($expectedClass === null) {
             $ruleSet->expects($this->never())->method('apply');
         } else {
@@ -446,7 +450,7 @@ abstract class AbstractTest extends \PHPUnit\Framework\TestCase
         $rule = null
     ) {
         $ruleViolation = $this->getMock(
-            'PHPMD\\RuleViolation',
+            RuleViolation::class,
             array(),
             array(null, null, null),
             '',

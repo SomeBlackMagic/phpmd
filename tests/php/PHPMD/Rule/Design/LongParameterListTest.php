@@ -138,7 +138,7 @@ class LongParameterListTest extends AbstractTest
     {
         $mock->expects($this->once())
             ->method('getParameterCount')
-            ->will($this->returnValue($parameterCount));
+            ->willReturn($parameterCount);
 
         return $mock;
     }

@@ -21,6 +21,9 @@ use PDepend\Source\AST\ASTClass;
 use PDepend\Source\AST\ASTMethod;
 use PDepend\Source\AST\ASTNamespace;
 use PHPMD\AbstractTest;
+use PHPMD\Node\TraitNode;
+use PHPMD\Node\ClassNode;
+use PHPMD\Node\InterfaceNode;
 
 /**
  * Test case for the method node implementation.
@@ -37,7 +40,7 @@ class MethodNodeTest extends AbstractTest
      */
     public function testMagicCallDelegatesToWrappedPHPDependMethod()
     {
-        $method = $this->getMock('PDepend\\Source\\AST\\ASTMethod', array(), array(null));
+        $method = $this->getMock(ASTMethod::class, array(), array(null));
         $method->expects($this->once())
             ->method('getStartLine');
 
@@ -65,7 +68,7 @@ class MethodNodeTest extends AbstractTest
     public function testGetParentTypeReturnsInterfaceForInterfaceMethod()
     {
         $this->assertInstanceOf(
-            'PHPMD\\Node\\InterfaceNode',
+            InterfaceNode::class,
             $this->getMethod()->getParentType()
         );
     }
@@ -78,7 +81,7 @@ class MethodNodeTest extends AbstractTest
     public function testGetParentTypeReturnsClassForClassMethod()
     {
         $this->assertInstanceOf(
-            'PHPMD\\Node\\ClassNode',
+            ClassNode::class,
             $this->getMethod()->getParentType()
         );
     }
@@ -89,7 +92,7 @@ class MethodNodeTest extends AbstractTest
     public function testGetParentTypeReturnsTrait()
     {
         $this->assertInstanceOf(
-            'PHPMD\\Node\\TraitNode',
+            TraitNode::class,
             $this->getMethod()->getParentType()
         );
     }

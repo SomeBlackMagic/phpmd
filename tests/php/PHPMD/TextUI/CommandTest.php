@@ -18,6 +18,7 @@
 namespace PHPMD\TextUI;
 
 use PHPMD\AbstractTest;
+use PHPMD\TextUI\StreamFilter;
 
 /**
  * Test case for the {@link \PHPMD\TextUI\Command} class.
@@ -172,7 +173,7 @@ class CommandTest extends AbstractTest
      */
     public function testMainWritesExceptionMessageToStderr()
     {
-        stream_filter_register('stderr_stream', 'PHPMD\\TextUI\\StreamFilter');
+        stream_filter_register('stderr_stream', StreamFilter::class);
 
         $this->stderrStreamFilter = stream_filter_prepend(STDERR, 'stderr_stream');
 
@@ -196,7 +197,7 @@ class CommandTest extends AbstractTest
      */
     public function testMainPrintsVersionToStdout()
     {
-        stream_filter_register('stderr_stream', 'PHPMD\\TextUI\\StreamFilter');
+        stream_filter_register('stderr_stream', StreamFilter::class);
 
         $this->stderrStreamFilter = stream_filter_prepend(STDOUT, 'stderr_stream');
 

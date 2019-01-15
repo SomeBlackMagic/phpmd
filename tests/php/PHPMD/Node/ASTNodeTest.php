@@ -18,6 +18,8 @@
 namespace PHPMD\Node;
 
 use PHPMD\AbstractTest;
+use PDepend\Source\AST\ASTNode;
+use PHPMD\AbstractRule;
 
 /**
  * Test case for the {@link \PHPMD\Node\ASTNode} class.
@@ -33,7 +35,7 @@ class ASTNodeTest extends AbstractTest
      */
     public function testGetImageDelegatesToGetImageMethodOfWrappedNode()
     {
-        $mock = $this->getMock('PDepend\Source\AST\ASTNode');
+        $mock = $this->getMock(ASTNode::class);
         $mock->expects($this->once())
             ->method('getImage');
 
@@ -48,7 +50,7 @@ class ASTNodeTest extends AbstractTest
      */
     public function testGetNameDelegatesToGetImageMethodOfWrappedNode()
     {
-        $mock = $this->getMock('PDepend\Source\AST\ASTNode');
+        $mock = $this->getMock(ASTNode::class);
         $mock->expects($this->once())
             ->method('getImage');
 
@@ -63,10 +65,10 @@ class ASTNodeTest extends AbstractTest
      */
     public function testHasSuppressWarningsAnnotationForAlwaysReturnsFalse()
     {
-        $mock = $this->getMock('PDepend\Source\AST\ASTNode');
+        $mock = $this->getMock(ASTNode::class);
 
         $node = new ASTNode($mock, __FILE__);
-        $rule = $this->getMockForAbstractClass('PHPMD\\AbstractRule');
+        $rule = $this->getMockForAbstractClass(AbstractRule::class);
 
         $this->assertFalse($node->hasSuppressWarningsAnnotationFor($rule));
     }
@@ -78,7 +80,7 @@ class ASTNodeTest extends AbstractTest
      */
     public function testGetParentNameReturnsNull()
     {
-        $mock = $this->getMock('PDepend\Source\AST\ASTNode');
+        $mock = $this->getMock(ASTNode::class);
         $node = new ASTNode($mock, __FILE__);
 
         $this->assertNull($node->getParentName());
@@ -91,7 +93,7 @@ class ASTNodeTest extends AbstractTest
      */
     public function testGetNamespaceNameReturnsNull()
     {
-        $mock = $this->getMock('PDepend\Source\AST\ASTNode');
+        $mock = $this->getMock(ASTNode::class);
         $node = new ASTNode($mock, __FILE__);
 
         $this->assertNull($node->getNamespaceName());
@@ -104,7 +106,7 @@ class ASTNodeTest extends AbstractTest
      */
     public function testGetFullQualifiedNameReturnsNull()
     {
-        $mock = $this->getMock('PDepend\Source\AST\ASTNode');
+        $mock = $this->getMock(ASTNode::class);
         $node = new ASTNode($mock, __FILE__);
 
         $this->assertNull($node->getFullQualifiedName());

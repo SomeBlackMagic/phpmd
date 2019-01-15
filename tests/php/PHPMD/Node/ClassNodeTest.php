@@ -21,6 +21,7 @@ use PDepend\Source\AST\ASTClass;
 use PDepend\Source\AST\ASTMethod;
 use PDepend\Source\AST\ASTNamespace;
 use PHPMD\AbstractTest;
+use PHPMD\AbstractRule;
 
 /**
  * Test case for the class node implementation.
@@ -55,7 +56,7 @@ class ClassNodeTest extends AbstractTest
         $class = new ASTClass(null);
         $class->setComment('/** @SuppressWarnings("PMD") */');
 
-        $rule = $this->getMock('PHPMD\\AbstractRule');
+        $rule = $this->getMock(AbstractRule::class);
 
         $node = new ClassNode($class);
 

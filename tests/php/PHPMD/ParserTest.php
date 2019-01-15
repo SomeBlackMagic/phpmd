@@ -18,6 +18,14 @@
 namespace PHPMD;
 
 use PDepend\Source\Parser\InvalidStateException;
+use PDepend\Source\AST\ASTCompilationUnit;
+use PDepend\Source\AST\ASTMethod;
+use PDepend\Source\AST\ASTFunction;
+use PDepend\Source\AST\ASTClass;
+use PDepend\Engine;
+use PHPMD\Node\FunctionNode;
+use PHPMD\Node\MethodNode;
+use PHPMD\Node\ClassNode;
 
 /**
  * Test case for the PHP_Depend backend adapter class.
@@ -39,7 +47,7 @@ class ParserTest extends AbstractTest
             ->will($this->returnValue(true));
 
         $adapter = new Parser($this->getPHPDependMock());
-        $adapter->addRuleSet($this->getRuleSetMock('PHPMD\\Node\\ClassNode'));
+        $adapter->addRuleSet($this->getRuleSetMock(ClassNode::class));
         $adapter->setReport($this->getReportMock(0));
         $adapter->visitClass($mock);
     }
@@ -71,7 +79,7 @@ class ParserTest extends AbstractTest
     public function testAdapterDelegatesMethodNodeToRuleSet()
     {
         $adapter = new Parser($this->getPHPDependMock());
-        $adapter->addRuleSet($this->getRuleSetMock('PHPMD\\Node\\MethodNode'));
+        $adapter->addRuleSet($this->getRuleSetMock(MethodNode::class));
         $adapter->setReport($this->getReportMock(0));
         $adapter->visitMethod($this->getPHPDependMethodMock());
     }
@@ -98,7 +106,7 @@ class ParserTest extends AbstractTest
     public function testAdapterDelegatesFunctionNodeToRuleSet()
     {
         $adapter = new Parser($this->getPHPDependMock());
-        $adapter->addRuleSet($this->getRuleSetMock('PHPMD\\Node\\FunctionNode'));
+        $adapter->addRuleSet($this->getRuleSetMock(FunctionNode::class));
         $adapter->setReport($this->getReportMock(0));
         $adapter->visitFunction($this->getPHPDependFunctionMock());
     }
@@ -147,7 +155,7 @@ class ParserTest extends AbstractTest
      */
     private function getPHPDependMock()
     {
-        return $this->getMock('PDepend\Engine', array(), array(null), '', false);
+        return $this->getMock(Engine::class, array(), array(null), '', false);
     }
 
     /**
@@ -157,7 +165,7 @@ class ParserTest extends AbstractTest
      */
     protected function getPHPDependClassMock()
     {
-        $class = $this->getMock('PDepend\\Source\\AST\\ASTClass', array(), array(null));
+        $class = $this->getMock(ASTClass::class, array(), array(null));
         $class->expects($this->any())
             ->method('getCompilationUnit')
             ->will($this->returnValue($this->getPHPDependFileMock('foo.php')));
@@ -182,7 +190,7 @@ class ParserTest extends AbstractTest
      */
     protected function getPHPDependFunctionMock($fileName = '/foo/bar.php')
     {
-        $function = $this->getMock('PDepend\Source\AST\ASTFunction', array(), array(null));
+        $function = $this->getMock(ASTFunction::class, array(), array(null));
         $function->expects($this->atLeastOnce())
             ->method('getCompilationUnit')
             ->will($this->returnValue($this->getPHPDependFileMock($fileName)));
@@ -198,7 +206,7 @@ class ParserTest extends AbstractTest
      */
     protected function getPHPDependMethodMock($fileName = '/foo/bar.php')
     {
-        $method = $this->getMock('PDepend\Source\AST\ASTMethod', array(), array(null));
+        $method = $this->getMock(ASTMethod::class, array(), array(null));
         $method->expects($this->atLeastOnce())
             ->method('getCompilationUnit')
             ->will($this->returnValue($this->getPHPDependFileMock($fileName)));
@@ -214,7 +222,7 @@ class ParserTest extends AbstractTest
      */
     protected function getPHPDependFileMock($fileName)
     {
-        $file = $this->getMock('PDepend\Source\AST\ASTCompilationUnit', array(), array(null));
+        $file = $this->getMock(ASTCompilationUnit::class, array(), array(null));
         $file->expects($this->any())
             ->method('getFileName')
             ->will($this->returnValue($fileName));

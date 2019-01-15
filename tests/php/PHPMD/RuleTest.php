@@ -31,7 +31,7 @@ class RuleTest extends AbstractTest
      */
     public function testGetIntPropertyReturnsValueOfTypeInteger()
     {
-        $rule = $this->getMockForAbstractClass('PHPMD\\AbstractRule');
+        $rule = $this->getMockForAbstractClass(\PHPMD\AbstractRule::class);
         $rule->addProperty(__FUNCTION__, '42.3');
 
         $this->assertSame(42, $rule->getIntProperty(__FUNCTION__));
@@ -44,7 +44,7 @@ class RuleTest extends AbstractTest
      */
     public function testGetBooleanPropertyReturnsTrueForStringValue1()
     {
-        $rule = $this->getMockForAbstractClass('PHPMD\\AbstractRule');
+        $rule = $this->getMockForAbstractClass(\PHPMD\AbstractRule::class);
         $rule->addProperty(__FUNCTION__, '1');
 
         $this->assertTrue($rule->getBooleanProperty(__FUNCTION__));
@@ -57,7 +57,7 @@ class RuleTest extends AbstractTest
      */
     public function testGetBooleanPropertyReturnsTrueForStringValueOn()
     {
-        $rule = $this->getMockForAbstractClass('PHPMD\\AbstractRule');
+        $rule = $this->getMockForAbstractClass(\PHPMD\AbstractRule::class);
         $rule->addProperty(__FUNCTION__, 'on');
 
         $this->assertTrue($rule->getBooleanProperty(__FUNCTION__));
@@ -70,7 +70,7 @@ class RuleTest extends AbstractTest
      */
     public function testGetBooleanPropertyReturnsTrueForStringValueTrue()
     {
-        $rule = $this->getMockForAbstractClass('PHPMD\\AbstractRule');
+        $rule = $this->getMockForAbstractClass(\PHPMD\AbstractRule::class);
         $rule->addProperty(__FUNCTION__, 'true');
 
         $this->assertTrue($rule->getBooleanProperty(__FUNCTION__));
@@ -83,7 +83,7 @@ class RuleTest extends AbstractTest
      */
     public function testGetBooleanPropertyReturnsTrueForDifferentStringValue()
     {
-        $rule = $this->getMockForAbstractClass('PHPMD\\AbstractRule');
+        $rule = $this->getMockForAbstractClass(\PHPMD\AbstractRule::class);
         $rule->addProperty(__FUNCTION__, 'True');
 
         $this->assertFalse($rule->getBooleanProperty(__FUNCTION__));
@@ -97,7 +97,7 @@ class RuleTest extends AbstractTest
      */
     public function testGetIntPropertyThrowsExceptionWhenNoPropertyForNameExists()
     {
-        $rule = $this->getMockForAbstractClass('PHPMD\\AbstractRule');
+        $rule = $this->getMockForAbstractClass(\PHPMD\AbstractRule::class);
         $rule->getIntProperty(__FUNCTION__);
     }
 
@@ -109,7 +109,7 @@ class RuleTest extends AbstractTest
      */
     public function testGetBooleanPropertyThrowsExceptionWhenNoPropertyForNameExists()
     {
-        $rule = $this->getMockForAbstractClass('PHPMD\\AbstractRule');
+        $rule = $this->getMockForAbstractClass(\PHPMD\AbstractRule::class);
         $rule->getBooleanProperty(__FUNCTION__);
     }
 
@@ -121,7 +121,7 @@ class RuleTest extends AbstractTest
      */
     public function testGetStringPropertyThrowsExceptionWhenNoPropertyForNameExists()
     {
-        $rule = $this->getMockForAbstractClass('PHPMD\\AbstractRule');
+        $rule = $this->getMockForAbstractClass(\PHPMD\AbstractRule::class);
         $rule->getStringProperty(__FUNCTION__);
     }
 
@@ -132,7 +132,7 @@ class RuleTest extends AbstractTest
      */
     public function testGetStringPropertyReturnsString()
     {
-        $rule = $this->getMockForAbstractClass('PHPMD\\AbstractRule');
+        $rule = $this->getMockForAbstractClass(\PHPMD\AbstractRule::class);
         $rule->addProperty(__FUNCTION__, 'Fourty Two');
 
         $this->assertSame('Fourty Two', $rule->getStringProperty(__FUNCTION__));

@@ -20,6 +20,7 @@ namespace PHPMD\Regression;
 use PHPMD\PHPMD;
 use PHPMD\Report;
 use PHPMD\RuleSetFactory;
+use PHPMD\Renderer\TextRenderer;
 
 /**
  * Regression test for issue 409.
@@ -43,7 +44,7 @@ class ExcessivePublicCountWorksCorrectlyWithStaticMethodsTest extends AbstractTe
      */
     public function setUp()
     {
-        $this->renderer = $this->getMockBuilder('PHPMD\Renderer\TextRenderer')
+        $this->renderer = $this->getMockBuilder(TextRenderer::class)
             ->disableOriginalConstructor()
             ->setMethods(array('renderReport', 'start', 'end'))
             ->getMock();

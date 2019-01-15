@@ -19,6 +19,9 @@ namespace PHPMD\TextUI;
 
 use PHPMD\AbstractTest;
 use PHPMD\Rule;
+use PHPMD\TextUI\StreamFilter;
+use PHPMD\Test\Renderer\NamespaceRenderer;
+use PHPMD\Renderer\TextRenderer;
 
 /**
  * Test case for the {@link \PHPMD\TextUI\CommandLineOptions} class.
@@ -364,12 +367,12 @@ class CommandLineOptionsTest extends AbstractTest
     {
         return array(
             array('html', 'PHPMD\\Renderer\\HtmlRenderer'),
-            array('text', 'PHPMD\\Renderer\\TextRenderer'),
+            array('text', TextRenderer::class),
             array('xml', 'PHPMD\\Renderer\\XmlRenderer'),
             array('PHPMD_Test_Renderer_PEARRenderer', 'PHPMD_Test_Renderer_PEARRenderer'),
-            array('PHPMD\\Test\\Renderer\\NamespaceRenderer', 'PHPMD\\Test\\Renderer\\NamespaceRenderer'),
+            array(NamespaceRenderer::class, NamespaceRenderer::class),
             /* Test what happens when class already exists. */
-            array('PHPMD\\Test\\Renderer\\NamespaceRenderer', 'PHPMD\\Test\\Renderer\\NamespaceRenderer'),
+            array(NamespaceRenderer::class, NamespaceRenderer::class),
         );
     }
 
@@ -405,7 +408,7 @@ class CommandLineOptionsTest extends AbstractTest
      */
     public function testDeprecatedCliOptions($deprecatedName, $newName)
     {
-        stream_filter_register('stderr_stream', 'PHPMD\\TextUI\\StreamFilter');
+        stream_filter_register('stderr_stream', StreamFilter::class);
 
         $this->stderrStreamFilter = stream_filter_prepend(STDERR, 'stderr_stream');
 
