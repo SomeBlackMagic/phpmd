@@ -88,6 +88,7 @@ class_alias('PHPMD\\Rule\\Controversial\\CamelCaseMethodName', 'PHP_PMD_Rule_Con
 class_alias('PHPMD\\Rule\\Controversial\\CamelCaseParameterName', 'PHP_PMD_Rule_Controversial_CamelCaseParameterName');
 class_alias('PHPMD\\Rule\\Controversial\\CamelCasePropertyName', 'PHP_PMD_Rule_Controversial_CamelCasePropertyName');
 class_alias('PHPMD\\Rule\\Controversial\\CamelCaseVariableName', 'PHP_PMD_Rule_Controversial_CamelCaseVariableName');
+class_alias('PHPMD\\Rule\\Controversial\\SnakeCaseVariableName', 'PHP_PMD_Rule_Controversial_SnakeCaseVariableName');
 class_alias('PHPMD\\Rule\\Controversial\\Superglobals', 'PHP_PMD_Rule_Controversial_Superglobals');
 class_alias('PHPMD\\Rule\\Design\\CouplingBetweenObjects', 'PHP_PMD_Rule_Design_CouplingBetweenObjects');
 class_alias('PHPMD\\Rule\\Design\\DepthOfInheritance', 'PHP_PMD_Rule_Design_DepthOfInheritance');
