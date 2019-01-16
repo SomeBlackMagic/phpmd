@@ -5,28 +5,24 @@ PHPMD is a spin-off project of PHP Depend and aims to be a PHP equivalent of the
 
 https://phpmd.org
 
-.. image:: https://poser.pugx.org/phpmd/phpmd/v/stable.svg
-   :target: https://packagist.org/packages/phpmd/phpmd
+.. image:: https://poser.pugx.org/someblackmagic/phpmd/v/stable.svg
+   :target: https://packagist.org/packages/someblackmagic/phpmd
    :alt: Latest Stable Version
 
-.. image:: https://poser.pugx.org/phpmd/phpmd/license.svg
-   :target: https://packagist.org/packages/phpmd/phpmd
+.. image:: https://poser.pugx.org/someblackmagic/phpmd/license.svg
+   :target: https://packagist.org/packages/someblackmagic/phpmd
    :alt: License
 
-.. image:: https://travis-ci.org/phpmd/phpmd.svg?branch=master
-   :target: https://travis-ci.org/phpmd/phpmd
+.. image:: https://travis-ci.org/SomeBlackMagic/phpmd.svg?branch=master
+   :target: https://travis-ci.org/SomeBlackMagic/phpmd
    :alt: Travis Build Status
 
-.. image:: https://ci.appveyor.com/api/projects/status/pc08owbun2y00kwk?svg=true
-   :target: https://ci.appveyor.com/project/phpmd/phpmd
-   :alt: AppVeyor Build Status
-
-.. image:: https://scrutinizer-ci.com/g/phpmd/phpmd/badges/build.png?b=master
-   :target: https://scrutinizer-ci.com/g/phpmd/phpmd/build-status/master
+.. image:: https://scrutinizer-ci.com/g/SomeBlackMagic/phpmd/badges/build.png?b=master
+   :target: https://scrutinizer-ci.com/g/SomeBlackMagic/phpmd/build-status/master
    :alt: Scrutinizer Build Status
 
-.. image:: https://scrutinizer-ci.com/g/phpmd/phpmd/badges/quality-score.png?b=master
-   :target: https://scrutinizer-ci.com/g/phpmd/phpmd/?branch=master
+.. image:: https://scrutinizer-ci.com/g/SomeBlackMagic/phpmd/badges/quality-score.png?b=master
+   :target: https://scrutinizer-ci.com/g/SomeBlackMagic/phpmd/?branch=master
    :alt: Scrutinizer Code Quality
 
 Installation

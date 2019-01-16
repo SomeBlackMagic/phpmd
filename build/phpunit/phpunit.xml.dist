@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<phpunit bootstrap="../../tests/php/bootstrap.php"
+
+>
+    <testsuites>
+        <testsuite name="PHPMD AllTests">
+            <directory suffix="Test.php">../../tests/php</directory>
+        </testsuite>
+    </testsuites>
+    <filter>
+        <whitelist addUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">../../src/main/php</directory>
+        </whitelist>
+    </filter>
+</phpunit>
