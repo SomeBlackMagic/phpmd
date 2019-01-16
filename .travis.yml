@@ -24,3 +24,6 @@ script:
   - if [ $TRAVIS_PHP_VERSION != 7.1 ]; then vendor/phpunit/phpunit/phpunit --configuration $TEST_CONFIG ; fi
   - if [ $TRAVIS_PHP_VERSION  = 7.1 ]; then vendor/phpunit/phpunit/phpunit --configuration $TEST_CONFIG --colors --coverage-text ; fi
 
+
+after_success:
+  - travis_retry php vendor/bin/php-coveralls -v
