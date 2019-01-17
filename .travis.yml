@@ -26,5 +26,7 @@ script:
 
 
 after_success:
-  - travis_retry php ./vendor/bin/php-coveralls -v --config .coveralls.yml; fi
+  - if [ $TRAVIS_PHP_VERSION >= 7.2 ]; then ./vendor/bin/coveralls -v --config .coveralls.yml ; fi
+  - if [ $TRAVIS_PHP_VERSION < 7.2 ]; then ./vendor/bin/php-coveralls -v --config .coveralls.yml ; fi
+
 
