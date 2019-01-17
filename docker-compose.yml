@@ -1,0 +1,8 @@
+version: "3.7"
+services:
+  php56:
+    build:
+      context: .docker/php5.6
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/app/:rw
