@@ -7,7 +7,7 @@
          xsi:noNamespaceSchemaLocation="http://pmd.sf.net/ruleset_xml_schema.xsd">
 
     <description>
-This ruleset contains a collection of controversial rules.
+        This ruleset contains a collection of controversial rules.
     </description>
 
     <rule name="Superglobals"
@@ -72,6 +72,9 @@ It is considered best practice to use the camelCase notation to name attributes.
             <property name="allow-underscore-test"
                       description="Is it allowed to have underscores in test method names."
                       value="false" />
+            <property name="allow-multiple-underscore-test"
+                      description="Is it allowed to have multiple underscores in test method names."
+                      value="false" />
         </properties>
         <example>
             <![CDATA[
@@ -99,6 +102,9 @@ It is considered best practice to use the camelCase notation to name methods.
                       value="false" />
             <property name="allow-underscore-test"
                       description="Is it allowed to have underscores in test method names."
+                      value="false" />
+            <property name="allow-multiple-underscore-test"
+                      description="Is it allowed to have multiple underscores in test method names."
                       value="false" />
         </properties>
         <example>
@@ -141,6 +147,30 @@ class ClassName {
         <description>
             <![CDATA[
 It is considered best practice to use the camelCase notation to name variables.
+            ]]>
+        </description>
+        <priority>1</priority>
+        <properties />
+        <example>
+            <![CDATA[
+class ClassName {
+    public function doSomething() {
+        $data_module = new DataModule();
+    }
+}
+            ]]>
+        </example>
+    </rule>
+
+
+    <rule name="SnakeCaseVariableName"
+          since="0.2"
+          message = "The variable {0} is not named in snake_case."
+          class="PHPMD\Rule\Controversial\SnakeCaseVariableName"
+          externalInfoUrl="#">
+        <description>
+            <![CDATA[
+It is considered best practice to use the snake_case notation to name variables.
             ]]>
         </description>
         <priority>1</priority>
