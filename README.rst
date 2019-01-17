@@ -25,6 +25,10 @@ https://phpmd.org
    :target: https://scrutinizer-ci.com/g/SomeBlackMagic/phpmd/?branch=master
    :alt: Scrutinizer Code Quality
 
+.. image:: https://coveralls.io/repos/github/SomeBlackMagic/phpmd/badge.svg?branch=master
+   :target: https://coveralls.io/github/SomeBlackMagic/phpmd?branch=master
+
+
 Installation
 ------------
 
