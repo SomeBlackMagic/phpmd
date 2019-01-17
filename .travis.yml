@@ -26,5 +26,5 @@ script:
 
 
 after_success:
-  - if [[ $EXECUTE_TEST_COVERALLS == 'true' ]]; then ./vendor/bin/php-coveralls -v --config .coveralls.yml; fi
+  - travis_retry php ./vendor/bin/php-coveralls -v --config .coveralls.yml; fi
 
