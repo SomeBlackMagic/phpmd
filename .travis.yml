@@ -22,10 +22,10 @@ before_script:
 
 script:
   - if [ $TRAVIS_PHP_VERSION != 7.1 ]; then ./vendor/bin/phpunit --configuration $TEST_CONFIG ; fi
-  - if [ $TRAVIS_PHP_VERSION  = 7.1 ]; then ./vendor/binphpunit --configuration $TEST_CONFIG --colors --coverage-text ; fi
+  - if [ $TRAVIS_PHP_VERSION  = 7.1 ]; then ./vendor/bin/phpunit --configuration $TEST_CONFIG --colors --coverage-text ; fi
 
 
 after_success:
-  - travis_retry php ./vendor/bin/php-coveralls -v --config .coveralls.yml; fi
+  - travis_retry php ./vendor/bin/php-coveralls -v --config .coveralls.yml -v;
 
 
