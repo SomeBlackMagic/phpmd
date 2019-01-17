@@ -21,10 +21,10 @@ before_script:
   - if [ ! $DEPENDENCIES ] ; then composer install ; fi
 
 script:
-  - if [ $TRAVIS_PHP_VERSION != 7.1 ]; then vendor/phpunit/phpunit/phpunit --coverage-clover build/phpunit/data/clover.xml --configuration $TEST_CONFIG ; fi
-  - if [ $TRAVIS_PHP_VERSION  = 7.1 ]; then vendor/phpunit/phpunit/phpunit --coverage-clover build/phpunit/data/clover.xml --configuration $TEST_CONFIG --colors --coverage-text ; fi
+  - if [ $TRAVIS_PHP_VERSION != 7.1 ]; then ./vendor/bin/phpunit --configuration $TEST_CONFIG ; fi
+  - if [ $TRAVIS_PHP_VERSION  = 7.1 ]; then ./vendor/binphpunit --configuration $TEST_CONFIG --colors --coverage-text ; fi
 
 
 after_success:
-  - if [[ $EXECUTE_TEST_COVERALLS == 'true' ]]; then ./vendor/bin/coveralls -v --config .coveralls.yml --coverage_clover=$TRAVIS_BUILD_DIR/build/logs/clover.xml; fi
-  - travis_retry php vendor/bin/php-coveralls -v
+  - if [[ $EXECUTE_TEST_COVERALLS == 'true' ]]; then ./vendor/bin/php-coveralls -v --config .coveralls.yml; fi
+
