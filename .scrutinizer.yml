@@ -16,9 +16,6 @@ checks:
         duplication: true
 
 tools:
-  # https://scrutinizer-ci.com/docs/tools/external-code-coverage/
-  external_code_coverage: true
-
   # https://scrutinizer-ci.com/docs/tools/php/php-analyzer/
   php_analyzer: true
 
