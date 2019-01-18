@@ -1,13 +1,17 @@
+filter:
+  paths: ["src/main/php/*", "tests/*"]
+  excluded_paths: []
+
 build:
     environment:
         php:
-            version: 7.1.0
+            version: 7.2.0
     tests:
         override:
             -
-                command: 'phpunit --coverage-clover=some-file'
+                command: './vendor/bin/phpunit --configuration build/phpunit/phpunit.travis.xml'
                 coverage:
-                    file: 'some-file'
+                    file: 'build/phpunit/data/clover.xml'
                     format: 'clover'
 
 checks:
