@@ -21,13 +21,9 @@ tools:
     config:
       controversial_rules: { camel_case_class_name: true, camel_case_property_name: true, camel_case_method_name: true, camel_case_parameter_name: true, camel_case_variable_name: true }
   php_cs_fixer:
-    filter:
-      
     config:
       level: all
   php_analyzer:
-    filter:
-      
     config:
       parameter_reference_check: { enabled: false }
       checkstyle: { enabled: false, no_trailing_whitespace: true, naming: { enabled: true, local_variable: '^[a-z][a-zA-Z0-9]*$', abstract_class_name: ^Abstract|Factory$, utility_class_name: 'Utils?$', constant_name: '^[A-Z][A-Z0-9]*(?:_[A-Z0-9]+)*$', property_name: '^[a-z][a-zA-Z0-9]*$', method_name: '^(?:[a-z]|__)[a-zA-Z0-9]*$', parameter_name: '^[a-z][a-zA-Z0-9]*$', interface_name: '^[A-Z][a-zA-Z0-9]*Interface$', type_name: '^[A-Z][a-zA-Z0-9]*$', exception_name: '^[A-Z][a-zA-Z0-9]*Exception$', isser_method_name: '^(?:is|has|should|may|supports)' } }
@@ -48,8 +44,7 @@ tools:
       doc_comment_fixes: { enabled: false }
       reflection_fixes: { enabled: false }
       use_statement_fixes: { enabled: true, remove_unused: true, preserve_multiple: false, order_alphabetically: false }
-  php_code_sniffer:
-    filter:
+  php_code_sniffer: true
       
   sensiolabs_security_checker: true
   php_cpd:                     true
