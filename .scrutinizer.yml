@@ -9,7 +9,7 @@ build:
     tests:
         override:
             -
-                command: ''
+                command: './vendor/bin/phpunit --configuration build/phpunit/phpunit.travis.xml'
                 coverage:
                     file: 'build/phpunit/data/clover.xml'
                     format: 'clover'
