@@ -1,3 +1,7 @@
+filter:
+  paths: ["src/main/php/*", "tests/*"]
+  excluded_paths: []
+
 build:
     environment:
         php:
@@ -5,7 +9,7 @@ build:
     tests:
         override:
             -
-                command: './vendor/bin/phpunit --configuration build/phpunit/phpunit.travis.xml'
+                command: ''
                 coverage:
                     file: 'build/phpunit/data/clover.xml'
                     format: 'clover'
@@ -16,16 +20,36 @@ checks:
         duplication: true
 
 tools:
+  php_code_coverage:
+    config_path:     ~
+    test_command:    './vendor/bin/phpunit --configuration build/phpunit/phpunit.travis.xml'
+    only_changesets: true
+    enabled:         true
+    filter:
+      paths: [src/main/php]
+      excluded_paths: []
+
+  # https://scrutinizer-ci.com/docs/tools/php/code-sniffer/
+  php_code_sniffer:
+    extensions:
+      - php
+    command: phpcs
+    enabled: true
+    config:
+      standard:         PSR2
+      sniffs: []
+      severity:         ~
+      error_severity:   ~
+      warning_severity: ~
+      tab_width:        ~
+      encoding:         UTF-8
+
   # https://scrutinizer-ci.com/docs/tools/php/php-analyzer/
   php_analyzer: true
 
   # https://scrutinizer-ci.com/docs/tools/php/change-tracking-analyzer/
   php_changetracking: false
 
-  # https://scrutinizer-ci.com/docs/tools/php/code-sniffer/
-  php_code_sniffer:
-    config:
-      standard: "PSR4"
 
   # https://scrutinizer-ci.com/docs/tools/php/mess-detector/
   php_mess_detector: true
