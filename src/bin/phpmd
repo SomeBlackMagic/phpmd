@@ -16,6 +16,7 @@
  * @link http://phpmd.org/
  */
 
+use Composer\XdebugHandler\XdebugHandler;
 use PHPMD\TextUI\Command;
 
 if (file_exists(__DIR__ . '/../../../../autoload.php')) {
@@ -35,6 +36,11 @@ if (file_exists(__DIR__ . '/../../../../autoload.php')) {
         );
     }
 }
+
+// Restart if xdebug is loading, unless the environment variable PHPMD_ALLOW_XDEBUG is set.
+$xdebug = new XdebugHandler('PHPMD');
+$xdebug->check();
+unset($xdebug);
 
 if (!ini_get('date.timezone')) {
     date_default_timezone_set('UTC');
@@ -69,6 +75,7 @@ class_alias('PHPMD\\Renderer\\HTMLRenderer', 'PHP_PMD_Renderer_HTMLRenderer');
 class_alias('PHPMD\\Renderer\\TextRenderer', 'PHP_PMD_Renderer_TextRenderer');
 class_alias('PHPMD\\Renderer\\XMLRenderer', 'PHP_PMD_Renderer_XMLRenderer');
 class_alias('PHPMD\\Renderer\\JSONRenderer', 'PHP_PMD_Renderer_JSONRenderer');
+class_alias('PHPMD\\Renderer\\JunitRenderer', 'PHP_PMD_Renderer_JunitRenderer');
 class_alias('PHPMD\\Rule\\AbstractLocalVariable', 'PHP_PMD_Rule_AbstractLocalVariable');
 class_alias('PHPMD\\Rule\\CyclomaticComplexity', 'PHP_PMD_Rule_CyclomaticComplexity');
 class_alias('PHPMD\\Rule\\ClassAware', 'PHP_PMD_Rule_IClassAware');
@@ -88,7 +95,6 @@ class_alias('PHPMD\\Rule\\Controversial\\CamelCaseMethodName', 'PHP_PMD_Rule_Con
 class_alias('PHPMD\\Rule\\Controversial\\CamelCaseParameterName', 'PHP_PMD_Rule_Controversial_CamelCaseParameterName');
 class_alias('PHPMD\\Rule\\Controversial\\CamelCasePropertyName', 'PHP_PMD_Rule_Controversial_CamelCasePropertyName');
 class_alias('PHPMD\\Rule\\Controversial\\CamelCaseVariableName', 'PHP_PMD_Rule_Controversial_CamelCaseVariableName');
-class_alias('PHPMD\\Rule\\Controversial\\SnakeCaseVariableName', 'PHP_PMD_Rule_Controversial_SnakeCaseVariableName');
 class_alias('PHPMD\\Rule\\Controversial\\Superglobals', 'PHP_PMD_Rule_Controversial_Superglobals');
 class_alias('PHPMD\\Rule\\Design\\CouplingBetweenObjects', 'PHP_PMD_Rule_Design_CouplingBetweenObjects');
 class_alias('PHPMD\\Rule\\Design\\DepthOfInheritance', 'PHP_PMD_Rule_Design_DepthOfInheritance');
