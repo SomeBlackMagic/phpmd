@@ -368,6 +368,8 @@ class CommandLineOptions
      *   <li>xml</li>
      *   <li>html</li>
      *   <li>text</li>
+        <li>json</li>
+        <li>ansi</li>
      * </ul>
      *
      * @param string $reportFormat
