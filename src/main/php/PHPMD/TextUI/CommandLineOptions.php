@@ -17,10 +17,12 @@
 
 namespace PHPMD\TextUI;
 
+use PHPMD\Renderer\AnsiRenderer;
 use PHPMD\Renderer\HTMLRenderer;
 use PHPMD\Renderer\JSONRenderer;
 use PHPMD\Renderer\TextRenderer;
 use PHPMD\Renderer\XMLRenderer;
+use PHPMD\Renderer\JunitRenderer;
 use PHPMD\Rule;
 
 /**
@@ -367,7 +369,8 @@ class CommandLineOptions
      *   <li>xml</li>
      *   <li>html</li>
      *   <li>text</li>
-     *   <li>json</li>
+        <li>json</li>
+        <li>ansi</li>
      * </ul>
      *
      * @param string $reportFormat
@@ -381,12 +384,16 @@ class CommandLineOptions
         switch ($reportFormat) {
             case 'xml':
                 return $this->createXmlRenderer();
+            case 'junit':
+                return $this->createJunitRenderer();
             case 'html':
                 return $this->createHtmlRenderer();
             case 'text':
                 return $this->createTextRenderer();
             case 'json':
                 return $this->createJsonRenderer();
+            case 'ansi':
+                return $this->createAnsiRenderer();
             default:
                 return $this->createCustomRenderer();
         }
@@ -401,11 +408,27 @@ class CommandLineOptions
     }
 
     /**
+     * @return \PHPMD\Renderer\JunitRenderer
+     */
+    protected function createJunitRenderer()
+    {
+        return new JunitRenderer();
+    }
+
+    /**
      * @return \PHPMD\Renderer\TextRenderer
      */
     protected function createTextRenderer()
     {
         return new TextRenderer();
+    }
+
+    /**
+     * @return \PHPMD\Renderer\AnsiRenderer
+     */
+    protected function createAnsiRenderer()
+    {
+        return new AnsiRenderer();
     }
 
     /**

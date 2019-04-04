@@ -17,6 +17,7 @@
 
 namespace PHPMD\Renderer;
 
+use ArrayIterator;
 use PHPMD\AbstractTest;
 use PHPMD\ProcessingError;
 use PHPMD\Stubs\WriterStub;
@@ -47,10 +48,10 @@ class TextRendererTest extends AbstractTest
         $report = $this->getReportMock(0);
         $report->expects($this->once())
             ->method('getRuleViolations')
-            ->willReturn(new \ArrayIterator($violations));
+            ->willReturn(new ArrayIterator($violations));
         $report->expects($this->once())
             ->method('getErrors')
-            ->willReturn(new \ArrayIterator(array()));
+            ->willReturn(new ArrayIterator(array()));
 
         $renderer = new TextRenderer();
         $renderer->setWriter($writer);
@@ -86,10 +87,10 @@ class TextRendererTest extends AbstractTest
         $report = $this->getReportMock(0);
         $report->expects($this->once())
             ->method('getRuleViolations')
-            ->willReturn(new \ArrayIterator(array()));
+            ->willReturn(new ArrayIterator(array()));
         $report->expects($this->once())
             ->method('getErrors')
-            ->willReturn(new \ArrayIterator($errors));
+            ->willReturn(new ArrayIterator($errors));
 
         $renderer = new TextRenderer();
         $renderer->setWriter($writer);
