@@ -18,6 +18,9 @@
 namespace PHPMD\TextUI;
 
 use PHPMD\AbstractTest;
+use PHPMD\Renderer\AnsiRenderer;
+use PHPMD\Renderer\HTMLRenderer;
+use PHPMD\Renderer\XMLRenderer;
 use PHPMD\Rule;
 use PHPMD\TextUI\StreamFilter;
 use PHPMD\Test\Renderer\NamespaceRenderer;
@@ -239,7 +242,7 @@ class CommandLineOptionsTest extends AbstractTest
         $args = array(__FILE__, __FILE__, 'text', 'codesize');
         $opts = new CommandLineOptions($args);
 
-        $this->assertContains('Available formats: html, json, junit, text, xml.', $opts->usage());
+        $this->assertContains('Available formats: ansi, html, json, text, xml.', $opts->usage());
     }
 
     /**
@@ -366,10 +369,11 @@ class CommandLineOptionsTest extends AbstractTest
     public function dataProviderCreateRenderer()
     {
         return array(
-            array('html', 'PHPMD\\Renderer\\HtmlRenderer'),
+            array('html', HTMLRenderer::class),
             array('text', TextRenderer::class),
-            array('xml', 'PHPMD\\Renderer\\XmlRenderer'),
-            array('PHPMD_Test_Renderer_PEARRenderer', 'PHPMD_Test_Renderer_PEARRenderer'),
+            array('xml', XMLRenderer::class),
+            array('ansi', AnsiRenderer::class),
+            array('PHPMD_Test_Renderer_PEARRenderer', \PHPMD_Test_Renderer_PEARRenderer::class),
             array(NamespaceRenderer::class, NamespaceRenderer::class),
             /* Test what happens when class already exists. */
             array(NamespaceRenderer::class, NamespaceRenderer::class),
@@ -408,7 +412,7 @@ class CommandLineOptionsTest extends AbstractTest
      */
     public function testDeprecatedCliOptions($deprecatedName, $newName)
     {
-        stream_filter_register('stderr_stream', StreamFilter::class);
+        stream_filter_register('stderr_stream', 'PHPMD\\TextUI\\StreamFilter');
 
         $this->stderrStreamFilter = stream_filter_prepend(STDERR, 'stderr_stream');
 

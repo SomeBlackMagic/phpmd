@@ -159,6 +159,7 @@ At the moment PHPMD comes with the following four renderers:
 - *text*, simple textual format.
 - *html*, single HTML file with possible problems.
 - *json*, formats JSON report.
+- *ansi*, a command line friendly format.
 
 API docs
 --------

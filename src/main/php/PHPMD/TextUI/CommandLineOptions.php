@@ -17,6 +17,7 @@
 
 namespace PHPMD\TextUI;
 
+use PHPMD\Renderer\AnsiRenderer;
 use PHPMD\Renderer\HTMLRenderer;
 use PHPMD\Renderer\JSONRenderer;
 use PHPMD\Renderer\TextRenderer;
@@ -368,7 +369,8 @@ class CommandLineOptions
      *   <li>xml</li>
      *   <li>html</li>
      *   <li>text</li>
-     *   <li>json</li>
+        <li>json</li>
+        <li>ansi</li>
      * </ul>
      *
      * @param string $reportFormat
@@ -390,6 +392,8 @@ class CommandLineOptions
                 return $this->createTextRenderer();
             case 'json':
                 return $this->createJsonRenderer();
+            case 'ansi':
+                return $this->createAnsiRenderer();
             default:
                 return $this->createCustomRenderer();
         }
@@ -417,6 +421,14 @@ class CommandLineOptions
     protected function createTextRenderer()
     {
         return new TextRenderer();
+    }
+
+    /**
+     * @return \PHPMD\Renderer\AnsiRenderer
+     */
+    protected function createAnsiRenderer()
+    {
+        return new AnsiRenderer();
     }
 
     /**

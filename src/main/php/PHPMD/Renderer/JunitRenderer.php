@@ -31,7 +31,7 @@ class JunitRenderer extends AbstractRenderer
      *
      * @var string
      */
-    private $fileName = null;
+    private $fileName;
 
     /**
      * This method will be called on all renderers before the engine starts the
