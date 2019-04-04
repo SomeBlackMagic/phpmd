@@ -22,6 +22,7 @@ use PHPMD\Renderer\HTMLRenderer;
 use PHPMD\Renderer\JSONRenderer;
 use PHPMD\Renderer\TextRenderer;
 use PHPMD\Renderer\XMLRenderer;
+use PHPMD\Renderer\JunitRenderer;
 use PHPMD\Rule;
 
 /**
@@ -383,6 +384,8 @@ class CommandLineOptions
         switch ($reportFormat) {
             case 'xml':
                 return $this->createXmlRenderer();
+            case 'junit':
+                return $this->createJunitRenderer();
             case 'html':
                 return $this->createHtmlRenderer();
             case 'text':
@@ -402,6 +405,14 @@ class CommandLineOptions
     protected function createXmlRenderer()
     {
         return new XMLRenderer();
+    }
+
+    /**
+     * @return \PHPMD\Renderer\JunitRenderer
+     */
+    protected function createJunitRenderer()
+    {
+        return new JunitRenderer();
     }
 
     /**
