@@ -18,6 +18,7 @@
 namespace PHPMD\Writer;
 
 use PHPMD\AbstractWriter;
+use RuntimeException;
 
 /**
  * This writer uses PHP's stream api as its output target.
@@ -43,11 +44,13 @@ class StreamWriter extends AbstractWriter
         } else {
             $dirName = dirname($streamResourceOrUri);
             if (file_exists($dirName) === false) {
-                mkdir($dirName, 0777, true);
+                if (!mkdir($dirName, 0777, true) && !is_dir($dirName)) {
+                    throw new RuntimeException(sprintf('Directory "%s" was not created', $dirName));
+                }
             }
             if (file_exists($dirName) === false) {
                 $message = 'Cannot find output directory "' . $dirName . '".';
-                throw new \RuntimeException($message);
+                throw new RuntimeException($message);
             }
 
             $this->stream = fopen($streamResourceOrUri, 'wb');
