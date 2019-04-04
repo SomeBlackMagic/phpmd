@@ -14,6 +14,8 @@ use PHPMD\RuleViolation;
 class AnsiRenderer extends AbstractRenderer
 {
 
+
+
     /**
      * @param \PHPMD\Report $report
      * @return void
@@ -54,7 +56,8 @@ class AnsiRenderer extends AbstractRenderer
     private function getMaxLineNumberLength(Report $report)
     {
         $maxLength = null;
-        foreach ($report->getRuleViolations() as $violation) {
+        $t = $report->getRuleViolations();
+        foreach ($t as $violation) {
             if ($maxLength === null) {
                 $maxLength = strlen($violation->getBeginLine());
                 continue;

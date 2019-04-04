@@ -17,13 +17,15 @@
 
 namespace PHPMD\Renderer;
 
+use ArrayIterator;
 use PHPMD\AbstractTest;
 use PHPMD\Stubs\WriterStub;
+
 
 /**
  * Test case for the ansi renderer implementation.
  *
- * @covers \PHPMD\Renderer\AnsiRendererTest
+ * @covers \PHPMD\Renderer\AnsiRenderer
  */
 class AnsiRendererTest extends AbstractTest
 {
@@ -34,6 +36,7 @@ class AnsiRendererTest extends AbstractTest
      */
     public function testRendererOutputsForReportWithContents()
     {
+
         $writer = new WriterStub();
 
         $violations = array(
@@ -49,19 +52,19 @@ class AnsiRendererTest extends AbstractTest
         $report = $this->getReportMock(0);
         $report->expects($this->atLeastOnce())
             ->method('getRuleViolations')
-            ->will($this->returnValue(new \ArrayIterator($violations)));
+            ->willReturn(new ArrayIterator($violations));
         $report->expects($this->atLeastOnce())
             ->method('isEmpty')
-            ->will($this->returnValue(false));
+            ->willReturn(false);
         $report->expects($this->atLeastOnce())
             ->method('hasErrors')
-            ->will($this->returnValue(true));
+            ->willReturn(true);
         $report->expects($this->atLeastOnce())
             ->method('getErrors')
-            ->will($this->returnValue(new \ArrayIterator($errors)));
+            ->willReturn(new ArrayIterator($errors));
         $report->expects($this->once())
             ->method('getElapsedTimeInMillis')
-            ->will($this->returnValue(200));
+            ->willReturn(200);
 
         $renderer = new AnsiRenderer();
         $renderer->setWriter($writer);
@@ -71,14 +74,14 @@ class AnsiRendererTest extends AbstractTest
         $renderer->end();
 
         $expectedChunks = [
-            PHP_EOL . "FILE: /bar.php" . PHP_EOL . "--------------" . PHP_EOL,
+            PHP_EOL . 'FILE: /bar.php' . PHP_EOL . '--------------' . PHP_EOL,
             " 1 | \e[31mVIOLATION\e[0m | Test description" . PHP_EOL,
-            PHP_EOL . "FILE: /foo.php" . PHP_EOL . "--------------" . PHP_EOL,
+            PHP_EOL . 'FILE: /foo.php' . PHP_EOL . '--------------' . PHP_EOL,
             " 2 | \e[31mVIOLATION\e[0m | Test description" . PHP_EOL,
             " 3 | \e[31mVIOLATION\e[0m | Test description" . PHP_EOL,
-            PHP_EOL . "\e[33mERROR\e[0m while parsing /foo/baz.php" . PHP_EOL . "--------------------------------" . PHP_EOL,
-            "Error in file \"/foo/baz.php\"" . PHP_EOL,
-            PHP_EOL . "Found 3 violations and 1 error in 200ms" . PHP_EOL,
+            PHP_EOL . "\e[33mERROR\e[0m while parsing /foo/baz.php" . PHP_EOL . '--------------------------------' . PHP_EOL,
+            'Error in file "/foo/baz.php"' . PHP_EOL,
+            PHP_EOL . 'Found 3 violations and 1 error in 200ms' . PHP_EOL,
         ];
 
         foreach($writer->getChunks() as $i => $chunk) {
@@ -102,19 +105,19 @@ class AnsiRendererTest extends AbstractTest
         $report = $this->getReportMock(0);
         $report->expects($this->atLeastOnce())
             ->method('getRuleViolations')
-            ->will($this->returnValue(new \ArrayIterator([])));
+            ->willReturn(new ArrayIterator([]));
         $report->expects($this->atLeastOnce())
             ->method('isEmpty')
-            ->will($this->returnValue(true));
+            ->willReturn(true);
         $report->expects($this->atLeastOnce())
             ->method('hasErrors')
-            ->will($this->returnValue(false));
+            ->willReturn(false);
         $report->expects($this->atLeastOnce())
             ->method('getErrors')
-            ->will($this->returnValue(new \ArrayIterator([])));
+            ->willReturn(new ArrayIterator([]));
         $report->expects($this->once())
             ->method('getElapsedTimeInMillis')
-            ->will($this->returnValue(200));
+            ->willReturn(200);
 
         $renderer = new AnsiRenderer();
         $renderer->setWriter($writer);
@@ -124,7 +127,7 @@ class AnsiRendererTest extends AbstractTest
         $renderer->end();
 
         $expectedChunks = [
-            PHP_EOL . "Found 0 violations and 0 errors in 200ms" . PHP_EOL,
+            PHP_EOL . 'Found 0 violations and 0 errors in 200ms' . PHP_EOL,
             PHP_EOL . "\e[32mNo mess detected\e[0m" . PHP_EOL,
         ];
 
