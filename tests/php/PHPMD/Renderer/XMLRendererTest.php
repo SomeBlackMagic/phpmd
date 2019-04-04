@@ -17,6 +17,7 @@
 
 namespace PHPMD\Renderer;
 
+use ArrayIterator;
 use PHPMD\AbstractTest;
 use PHPMD\ProcessingError;
 use PHPMD\Stubs\WriterStub;
@@ -47,10 +48,10 @@ class XMLRendererTest extends AbstractTest
         $report = $this->getReportMock(0);
         $report->expects($this->once())
             ->method('getRuleViolations')
-            ->willReturn(new \ArrayIterator($violations));
+            ->willReturn(new ArrayIterator($violations));
         $report->expects($this->once())
             ->method('getErrors')
-            ->willReturn(new \ArrayIterator(array()));
+            ->willReturn(new ArrayIterator(array()));
 
         $renderer = new XMLRenderer();
         $renderer->setWriter($writer);
@@ -59,7 +60,7 @@ class XMLRendererTest extends AbstractTest
         $renderer->renderReport($report);
         $renderer->end();
 
-        $this->assertXmlEquals(
+        self::assertXmlEquals(
             $writer->getData(),
             'renderer/xml_renderer_expected1.xml'
         );
@@ -85,10 +86,10 @@ class XMLRendererTest extends AbstractTest
         $report = $this->getReportMock(0);
         $report->expects($this->once())
             ->method('getRuleViolations')
-            ->willReturn(new \ArrayIterator(array()));
+            ->willReturn(new ArrayIterator(array()));
         $report->expects($this->once())
             ->method('getErrors')
-            ->willReturn(new \ArrayIterator($processingErrors));
+            ->willReturn(new ArrayIterator($processingErrors));
 
         $renderer = new XMLRenderer();
         $renderer->setWriter($writer);
@@ -97,7 +98,7 @@ class XMLRendererTest extends AbstractTest
         $renderer->renderReport($report);
         $renderer->end();
 
-        $this->assertXmlEquals(
+        self::assertXmlEquals(
             $writer->getData(),
             'renderer/xml_renderer_processing_errors.xml'
         );
