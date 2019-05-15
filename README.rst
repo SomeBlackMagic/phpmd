@@ -1,3 +1,5 @@
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FSomeBlackMagic%2Fphpmd.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FSomeBlackMagic%2Fphpmd?ref=badge_shield)
+
 PHPMD
 =====
 
@@ -166,3 +168,6 @@ API docs
 You find the up to date class API docs at `codedoc.pub`__.
 
 __ https://codedoc.pub/phpmd/phpmd/master/index.html
+
+
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FSomeBlackMagic%2Fphpmd.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FSomeBlackMagic%2Fphpmd?ref=badge_large)
